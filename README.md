@@ -2,8 +2,13 @@
 KNN predictive maintenance on Azure ML (Notebook, AutoML, Designer)
 This repository contains a complete, end-to-end Machine Learning pipeline for Predictive Maintenance implemented on Microsoft Azure Machine Learning Studio. The project utilizes a K-Nearest Neighbors (KNN) classification model to predict equipment failure based on telemetry sensor metrics.📌
  # Project Overview
- Predictive maintenance helps organizations prevent costly equipment downtime by identifying potential failure modes before they occur. This project covers the full MLOps lifecycle from workspace setup and data ingestion to model training, Automated ML, Designer Pipelines, and Managed Online Endpoint deployment. 🏗️ Azure ML Architecture & EnvironmentResource Group: ML_KNN_PROJECT_BY_UMM-E-KALSOOMAzure ML Workspace: KNN_project_kalsoom Compute Instance: kalsoomume7791 (Python 3.8 / AzureML Py38)Model Registry: knn-predictive-maintenance:1Managed Online Endpoint: knn-maintenance-endpoint📂
-  Repository Structure.
+ Predictive maintenance helps organizations prevent costly equipment downtime by identifying potential failure modes before they occur. This project covers the full MLOps lifecycle from workspace setup and data ingestion to model training, Automated ML, Designer Pipelines, and Managed Online Endpoint deployment. 
+ # Azure ML Architecture & EnvironmentResource Group:
+  * ML_KNN_PROJECT_BY_UMM-E-KALSOOM
+  Azure Ml Workspace:
+  KNN_project_kalsoom 
+  Compute Instance: kalsoomume7791 (Python 3.8 / AzureML Py38)Model Registry: knn-predictive-maintenance:1Managed Online Endpoint: knn-maintenance-endpoint
+# Repository Structure.
 ├── README.md                  # Comprehensive Project Documentation
 ├── knn_model.pkl              # Serialized Trained KNN Model (97.7% Accuracy)
 ├── scaler.pkl                 # Serialized StandardScaler Instance
