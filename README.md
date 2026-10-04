@@ -5,35 +5,52 @@ This repository contains a complete, end-to-end Machine Learning pipeline for Pr
  Predictive maintenance helps organizations prevent costly equipment downtime by identifying potential failure modes before they occur. This project covers the full MLOps lifecycle from workspace setup and data ingestion to model training, Automated ML, Designer Pipelines, and Managed Online Endpoint deployment. 
  # Azure ML Architecture & EnvironmentResource Group:
   * ML_KNN_PROJECT_BY_UMM-E-KALSOOM
-  Azure Ml Workspace:
+  * Azure Ml Workspace:
   KNN_project_kalsoom 
-  Compute Instance: kalsoomume7791 (Python 3.8 / AzureML Py38)Model Registry: knn-predictive-maintenance:1Managed Online Endpoint: knn-maintenance-endpoint
+  * Compute Instance: kalsoomume7791 (Python 3.8 / AzureML Py38)
+  * Model Registry: knn-predictive-maintenance:1
+  *Managed Online Endpoint: knn-maintenance-endpoint
 # Repository Structure.
-├── README.md                  # Comprehensive Project Documentation
-├── knn_model.pkl              # Serialized Trained KNN Model (97.7% Accuracy)
-├── scaler.pkl                 # Serialized StandardScaler Instance
-├── score.py                   # Scoring Script for Inference
-├── conda.yml                  # Conda Dependencies Configuration
-├── environment.yml            # Azure ML Environment Specification
-├── endpoint.yml               # Managed Online Endpoint Configuration
-├── deployment.yml             # Managed Online Deployment Configuration
-└── notebooks/
-    └──#  knn_predictive_maintenance.ipynb  # Exploratory Data Analysis & Model Training
+* README.md                         Comprehensive Project
+ Documentation
+* knn_model.pkl               Serialized Trained KNN Model (97.7% Accuracy)
+* scaler.pkl                  Serialized StandardScaler Instance
+* score.py                   
+ Scoring Script for Inference
+* conda.yml                   Conda Dependencies Configuration
+* environment.yml            Azure ML Environment Specification
+* endpoint.yml               Managed Online Endpoint Configuration
+*deployment.yml              Managed Online Deployment Configuration
+* notebooks/
+    * knn_predictive_maintenance.ipynb 
+     * Exploratory Data Analysis & Model Training
 # Assignment Parts & Implementation Summary 
-Part 1: Workspace & Resource Group SetupCreated Azure Machine Learning Workspace (KNN_project_kalsoom) under the designated Resource Group (ML_KNN_PROJECT_BY_UMM-E-KALSOOM).Configured region-specific cloud resource permissions and workspace settings.
-Part 2: Compute Resources ProvisioningProvisioned a dedicated Compute Instance (kalsoomume7791) running Python 3.8 for interactive model development and notebook execution.Provisioned scalable Compute Clusters for batch workloads and Automated ML runs.
-Part 3: Source Control & GitHub IntegrationConfigured GitHub Personal Access Token (PAT) authentication.Cloned the repository directly into the Azure ML Compute Instance home directory for version control synchronization.
-Part 4: Data Ingestion & Data AssetsIngested raw predictive maintenance telemetry dataset.Performed data cleaning, missing value handling, and feature selection.Registered cleaned datasets as official Azure ML Data Assets for repeatable pipeline runs.
-Part 5: KNN Model Training & Hyperparameter TuningConducted Exploratory Data Analysis (EDA) and feature correlation profiling.Standardized feature distributions using StandardScaler.Performed Grid Search Cross-Validation (GridSearchCV) to optimize $K$-neighbors and distance metrics.Achieved 97.7% Test Accuracy.Logged metrics, parameters, and confusion matrix artifacts using MLflow integration.Registered knn-predictive-maintenance:1 in the Azure ML Model Registry.
-Part 6: Automated Machine Learning (AutoML)Executed an Automated ML classification experiment on the compute cluster.Evaluated multiple algorithms (LightGBM, XGBoost, Random Forest) against hyperparameter-tuned KNN baseline metrics.
-Part 7: Azure ML Designer PipelinesBuilt no-code/low-code Azure ML Designer drag-and-drop training and inference pipelines.Implemented real-time scoring logic with custom component integration (Approach 3).Part 8: Azure ML Managed Online Endpoint DeploymentDeveloped score.py entry script defining init() model loading and run() prediction scoring.Created conda.yml and environment.yml container specifications.Provisioned knn-maintenance-endpoint real-time REST API endpoint using Azure ML CLI v2.
-Part 9: CI/CD Synchronization & Clean UpSynchronized all codebase artifacts (score.py, deployment YAMLs, notebooks) with GitHub repository.Established clean resource management guidelines to optimize Azure credit consumption.🚀 Deployment InstructionsPrerequisitesMake sure you are signed into Azure CLI and have navigated to your repository path:cd ~/cloudfiles/code/Users/kalsoomume779/Azure_ML_KNN_Maintenance/Azure_ML_KNN_Maintenance
+# Part 1:
+ Workspace & Resource Group SetupCreated Azure Machine Learning Workspace (KNN_project_kalsoom) under the designated Resource Group (ML_KNN_PROJECT_BY_UMM-E-KALSOOM).Configured region-specific cloud resource permissions and workspace settings.
+ # Part 2: 
+ Compute Resources ProvisioningProvisioned a dedicated Compute Instance (kalsoomume7791) running Python 3.8 for interactive model development and notebook execution.Provisioned scalable Compute Clusters for batch workloads and Automated ML runs.
+# Part 3:
+ Source Control & GitHub IntegrationConfigured GitHub Personal Access Token (PAT) authentication.Cloned the repository directly into the Azure ML Compute Instance home directory for version control synchronization.
+# Part 4:
+ Data Ingestion & Data AssetsIngested raw predictive maintenance telemetry dataset.Performed data cleaning, missing value handling, and feature selection.Registered cleaned datasets as official Azure ML Data Assets for repeatable pipeline runs.
+# Part 5: 
+KNN Model Training & Hyperparameter TuningConducted Exploratory Data Analysis (EDA) and feature correlation profiling.Standardized feature distributions using StandardScaler.Performed Grid Search Cross-Validation (GridSearchCV) to optimize $K$-neighbors and distance metrics.Achieved 97.7% Test Accuracy.Logged metrics, parameters, and confusion matrix artifacts using MLflow integration.Registered knn-predictive-maintenance:1 in the Azure ML Model Registry.
+# Part 6:
+ Automated Machine Learning (AutoML)Executed an Automated ML classification experiment on the compute cluster.Evaluated multiple algorithms (LightGBM, XGBoost, Random Forest) against hyperparameter-tuned KNN baseline metrics.
+# Part 7: 
+ Azure ML Designer PipelinesBuilt no-code/low-code Azure ML Designer drag-and-drop training and inference pipelines.Implemented real-time scoring logic with custom component integration (Approach 3).
+ # Part 8: 
+ Azure ML Managed Online Endpoint DeploymentDeveloped score.py entry script defining init() model loading and run() prediction scoring.Created conda.yml and environment.yml container specifications.Provisioned knn-maintenance-endpoint real-time REST API endpoint using Azure ML CLI v2.
+# Part 9: 
+CI/CD Synchronization & Clean UpSynchronized all codebase artifacts (score.py, deployment YAMLs, notebooks) with GitHub repository.Established clean resource management guidelines to optimize Azure credit consumption.
+# Deployment 
+ InstructionsPrerequisitesMake sure you are signed into Azure CLI and have navigated to your repository path:cd ~/cloudfiles/code/Users/kalsoomume779/Azure_ML_KNN_Maintenance/Azure_ML_KNN_Maintenance
 1. Set Workspace Defaultsaz configure --defaults group=ML_KNN_PROJECT_BY_UMM-E-KALSOOM workspace=KNN_project_kalsoom
 2. Register Modelaz ml model create --name knn-predictive-maintenance --version 1 --path knn_model.pkl --type custom_model -g ML_KNN_PROJECT_BY_UMM-E-KALSOOM -w KNN_project_kalsoom
 3. Create Custom Environmentaz ml environment create --file environment.yml -g ML_KNN_PROJECT_BY_UMM-E-KALSOOM -w KNN_project_kalsoom
 4. Provision Online Endpointaz ml online-endpoint create --file endpoint.yml -g ML_KNN_PROJECT_BY_UMM-E-KALSOOM -w KNN_project_kalsoom
 5. Deploy Model Containeraz ml online-deployment create --file deployment.yml --all-traffic -g ML_KNN_PROJECT_BY_UMM-E-KALSOOM -w KNN_project_kalsoom
-#Sample Inference API 
+# Sample Inference API 
 PayloadTo send a test request to the deployed REST Endpoint, structure the JSON payload as follows:{
   "data": [
     [300.1, 310.2, 1400, 40.5, 10]
@@ -42,6 +59,7 @@ PayloadTo send a test request to the deployed REST Endpoint, structure the JSON 
 Response Example:{
   "prediction": [0]
 }
-(Where 0 indicates Normal Operation and 1 indicates Predicted Equipment Failure).📝 
+(Where 0 indicates Normal Operation and 1 indicates Predicted Equipment Failure).
 # Author
-  # AcknowledgmentsDeveloper: Umm-e-KalsoomPlatform: Microsoft Azure Machine Learning Studio
+  * AcknowledgmentsDeveloper: Umm-e-Kalsoom 
+  * Platform: Microsoft Azure Machine Learning Studio
